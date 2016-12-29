@@ -1,0 +1,31 @@
+{
+  "name": "malditalisiadabot",
+  "version": "1.0.0",
+  "description": "Node bot to interact with Soraya Montenegro",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabygarro/MalditaLisiadaBot.git"
+  },
+  "keywords": [
+    "maldita",
+    "lisiada",
+    "soraya",
+    "montenegro",
+    "telegram",
+    "bot"
+  ],
+  "author": "Gabriela Garro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabygarro/MalditaLisiadaBot/issues"
+  },
+  "homepage": "https://github.com/gabygarro/MalditaLisiadaBot#readme",
+  "dependencies": {
+    "glob": "^7.1.1",
+    "node-telegram-bot-api": "^0.25.0"
+  }
+}

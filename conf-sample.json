@@ -1,0 +1,16 @@
+{
+  "bot": {
+    "token": "<ask @BotFather>",
+    "opts": {"polling": true},
+    "AWS_ID":"SECRET_KEY_ID",
+    "AWS_SECRET":"SECRET_KEY",
+    "TAG":"descripcion??"
+
+  },
+  "mimes": {
+    "photo":["image/jpeg", "image/png"],
+    "audio":["audio/ogg"],
+    "sticker":["image/webp"],
+    "video":["video/mp4"]
+  }
+}
