@@ -9,6 +9,7 @@ module.exports = function (bot) {
     var description = "¡Maldita lisiada!";
 
     var exec = function (msg) {
+        bot.sendSticker(msg.chat.id, "BQADAwADaAADVC-4B7GiygWzwI4yAg");
         var respuesta = "./plugins/clips/malditalisiada.ogg";
         bot.sendVoice(msg.chat.id, respuesta, 
             { caption: "¡Maldita lisiada!"});

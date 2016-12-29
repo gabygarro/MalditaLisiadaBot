@@ -115,11 +115,11 @@ bot.on('message', function (message) {
             " (" + message.from.first_name + " " + message.from.last_name + " " + message.from.id + "): " + message.text;
         console.log(entrante);
     }
-    ///console.log(message);
+    //console.log(message);
 
     //Si la añadieron a un grupo
-    if (!privado && message.new_chat_member != undefined 
-        && message.new_chat_member.username == "InesSanchezBot") {
+    if (!privado && message.new_chat_member != undefined
+        && message.new_chat_member.username == "MalditaLisiadaBot") {
         message.text = "/help";
         var mensaje = "Mi nombre es Soraya Montenegro de la Vega Montalbán y lamento haber sido agregada a este grupo de marginales.\n"
         bot.sendMessage(message.chat.id, mensaje);
@@ -156,8 +156,10 @@ bot.on('message', function (message) {
     }
     else {
         //Enviar respuesta
-        var respuesta = "No seas inútil y utiliza alguno de los comandos en /help\n";
-        console.log("\tYo: " + respuesta);
-        bot.sendMessage(message.chat.id, respuesta);
+        if (message.text != undefined) {
+            var respuesta = "No seas inútil y utiliza alguno de los comandos en /help\n";
+            console.log("\tYo: " + respuesta);
+            bot.sendMessage(message.chat.id, respuesta);
+        }
     }
 });
