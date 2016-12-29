@@ -40,7 +40,7 @@ module.exports = function (bot) {
                 { reply_to_message_id: msg.message_id});
         }
         else {
-            respuesta = "Tienes que escribir una pregunta para que te responda, igualada.";
+            respuesta = "No puedo responder si no me preguntas, igualada.\nEjemplo: /preguntar ¿Porqué eres tan marginal?";
             bot.sendMessage(msg.chat.id, respuesta, 
                 { reply_to_message_id: msg.message_id});
         }
