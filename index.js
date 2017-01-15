@@ -5,7 +5,11 @@ var TelegramBot = require('node-telegram-bot-api'),
 _ = require('lodash'),
 utils = require('./lib/utils'), 
 path = require('path'),
-conf = require('./conf.json');
+conf = require('./conf.json'),
+request = require('request');
+
+// Variable de log
+var log = "";
 
 var bot = new TelegramBot(conf.bot.token, conf.bot.opts);
 bot.plugins = [];
@@ -64,7 +68,7 @@ var reply = function (chatId) {
     }
 };
 
-var loadPlugin = function(pluginPath) {
+var loadPlugin = function (pluginPath) {
     var plugin = require(path.resolve(pluginPath))(bot, conf);
 
     // Default match function
@@ -104,18 +108,19 @@ bot.on('message', function (message) {
 
 	// Registrar conversación a consola
 	var dt = new Date();
-	console.log(dt.toUTCString());
+	var entrante = dt.toUTCString();
     if (privado) {
-        var entrante = "\t" + message.chat.username  + 
+        entrante += "\t" + message.chat.username  + 
             " (" + message.from.first_name + " " + message.from.last_name + " " +  message.from.id + "): " + message.text;
         console.log(entrante);
     }
     else {
-        var entrante = "\t" + message.chat.title + " - " + message.from.username + 
+        entrante += "\t" + message.chat.title + " - " + message.from.username + 
             " (" + message.from.first_name + " " + message.from.last_name + " " + message.from.id + "): " + message.text;
         console.log(entrante);
     }
     //console.log(message);
+    log += entrante + "\n";
 
     //Si la añadieron a un grupo
     if (!privado && message.new_chat_member != undefined
@@ -125,8 +130,13 @@ bot.on('message', function (message) {
         bot.sendMessage(message.chat.id, mensaje);
     }
 
+    //Si el mensaje es mío
+    if (_.startsWith(message.text, '/getLog') && message.chat.id == 82146651) {
+        bot.sendMessage(82146651, log);
+        log = "";
+    }
     // Parse msg text
-    if (_.startsWith(message.text, '/')) { //es un comando
+    else if (_.startsWith(message.text, '/')) { //es un comando
         // Modificación para correr help cuando se hace /start
         message.command = utils.parseCommand(message.text);
         if (privado && message.command.name == "start") {
