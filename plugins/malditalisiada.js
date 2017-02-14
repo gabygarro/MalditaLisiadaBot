@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var utils = require('../lib/utils');
+const fs = require('fs');
 
 module.exports = function (bot) {
 
@@ -13,6 +14,8 @@ module.exports = function (bot) {
         var respuesta = "./plugins/clips/malditalisiada.ogg";
         bot.sendVoice(msg.chat.id, respuesta, 
             { caption: "¡Maldita lisiada!"});
+        /*const stream = fs.createReadStream(respuesta);
+        bot.sendAudio(msg.chat.id, stream);*/
         console.log("\tYo: " + respuesta);
     };
 

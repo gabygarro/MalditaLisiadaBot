@@ -9,7 +9,7 @@ module.exports = function(bot) {
 
     var exec = function(msg, reply) {
         
-        reply.sendMessage("Creado por @GabyGarro, con ayuda de [lamalditalisiada.com](lamalditalisiada.com)",
+        reply.sendMessage("Creado por @GabyGarro, con ayuda de [lamalditalisiada.com](lamalditalisiada.com)\nSolucionando el problema de voice notes en iOS.",
             {parse_mode: 'Markdown' });
     };
 
