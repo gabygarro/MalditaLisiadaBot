@@ -2,7 +2,6 @@
 
 var _ = require('lodash');
 var utils = require('../lib/utils');
-const fs = require('fs');
 
 module.exports = function (bot) {
 
