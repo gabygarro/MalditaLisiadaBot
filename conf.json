@@ -1,0 +1,18 @@
+{
+  "bot": {
+    "token": "328518760:AAGcHuOVoAy4yFKnLuCr5wRxZR9q0eHRDx8",
+    "opts": {"polling": true,
+      "interval": 2000, 
+      "timeout": 10 },
+    "AWS_ID":"SECRET_KEY_ID",
+    "AWS_SECRET":"SECRET_KEY",
+    "TAG":"descripcion"
+
+  },
+  "mimes": {
+    "photo":["image/jpeg", "image/png"],
+    "audio":["audio/ogg"],
+    "sticker":["image/webp"],
+    "video":["video/mp4"]
+  }
+}
