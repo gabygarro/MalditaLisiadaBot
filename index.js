@@ -8,8 +8,7 @@ path = require('path'),
 conf = require('./conf.json'),
 request = require('request');
 
-// Variable de log
-var log = "";
+var fs = require('fs');
 
 var bot = new TelegramBot(conf.bot.token, conf.bot.opts);
 bot.plugins = [];
@@ -112,15 +111,14 @@ bot.on('message', function (message) {
     if (privado) {
         entrante += "\t" + message.chat.username  + 
             " (" + message.from.first_name + " " + message.from.last_name + " " +  message.from.id + "): " + message.text;
-        console.log(entrante);
     }
     else {
         entrante += "\t" + message.chat.title + " - " + message.from.username + 
             " (" + message.from.first_name + " " + message.from.last_name + " " + message.from.id + "): " + message.text;
-        console.log(entrante);
     }
+    console.log(entrante);
+    fs.appendFileSync('malditalisiada.log', entrante + "\n");
     //console.log(message);
-    log += entrante + "\n";
 
     //Si la añadieron a un grupo
     if (!privado && message.new_chat_member != undefined
@@ -132,8 +130,8 @@ bot.on('message', function (message) {
 
     //Si el mensaje es mío
     if (_.startsWith(message.text, '/getLog') && message.chat.id == 82146651) {
+        var log = fs.readFileSync('malditalisiada.log').slice(-4096);
         bot.sendMessage(82146651, log);
-        log = "";
     }
     // Parse msg text
     else if (_.startsWith(message.text, '/')) { //es un comando
